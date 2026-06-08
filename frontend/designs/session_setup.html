@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShuttlePro - Session Setup</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#363a3c",
+                        "inverse-surface": "#e0e3e6",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#c6c6c9",
+                        "surface-tint": "#b8d300",
+                        "outline": "#909378",
+                        "on-primary": "#2c3400",
+                        "on-surface": "#e0e3e6",
+                        "surface-container-highest": "#323538",
+                        "surface-container": "#1c2023",
+                        "on-tertiary-fixed": "#181c20",
+                        "on-background": "#e0e3e6",
+                        "on-primary-fixed": "#191e00",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#2d3135",
+                        "surface-container-high": "#272a2d",
+                        "on-secondary": "#2f3133",
+                        "on-tertiary-fixed-variant": "#43474b",
+                        "outline-variant": "#454932",
+                        "primary": "#ffffff",
+                        "background": "#101416",
+                        "inverse-on-surface": "#2d3133",
+                        "surface": "#101416",
+                        "secondary-container": "#454749",
+                        "primary-fixed": "#d2f000",
+                        "on-secondary-fixed": "#1a1c1e",
+                        "tertiary-fixed": "#e0e3e8",
+                        "on-primary-fixed-variant": "#414c00",
+                        "on-secondary-container": "#b4b5b7",
+                        "on-primary-container": "#5d6b00",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#b8d300",
+                        "inverse-primary": "#576500",
+                        "on-tertiary-container": "#616569",
+                        "tertiary-fixed-dim": "#c3c7cc",
+                        "surface-variant": "#323538",
+                        "on-surface-variant": "#c6c9ab",
+                        "tertiary-container": "#e0e3e8",
+                        "on-secondary-fixed-variant": "#454749",
+                        "primary-container": "#d2f000",
+                        "surface-container-lowest": "#0b0f11",
+                        "surface-container-low": "#181c1e",
+                        "surface-dim": "#101416",
+                        "tertiary": "#ffffff",
+                        "secondary": "#c6c6c9",
+                        "secondary-fixed": "#e2e2e5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max-width": "1440px",
+                        "grid-columns": "12",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin-desktop": "40px",
+                        "sidebar-width": "280px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Sora"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Sora"],
+                        "headline-lg": ["Sora"],
+                        "display-md": ["Sora"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-md": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .glass-panel { background: rgba(30, 32, 34, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid theme('colors.outline-variant'); }
+        .player-card.selected { border-color: theme('colors.primary-fixed'); background: rgba(210, 240, 0, 0.05); }
+        .player-card.selected .check-icon { opacity: 1; transform: scale(1); }
+        .player-card .check-icon { opacity: 0; transform: scale(0.8); transition: all 0.2s ease; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="bg-surface-container dark:bg-surface-container fixed left-0 top-0 h-screen w-sidebar-width border-r border-outline-variant dark:border-outline-variant fixed left-0 top-0 bottom-0 w-[280px] z-50 flex flex-col justify-between">
+<div>
+<!-- Header -->
+<div class="p-6 border-b border-outline-variant dark:border-outline-variant">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden flex-shrink-0">
+<img alt="Badminton Group Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU9x3gXT2DMldY6JoUxQiSHKKeOQfdbii-Wi0WibOASyRNXpXaGTX1kNKzuK-NdAGHXuCTtPiWAB1GQ5y_qYqapaNIEAn0C48IvqZFy5luzXTqJuVCEZ9VnRHNiZ8Ui55yb5i-Uqa0b0ffCSccONNM-LS8mnDSYZn018BaRfTU4afbfdzavTsNrIGkbNJ6QZbuT1Dooynop8y9WX0CLe5wSdamCNlt9BZNhfyY_8Mi5QBg84Nj3D4JspYdqykthOa7hanyRXjyapQI"/>
+</div>
+<div>
+<h1 class="font-display-md text-display-md font-bold text-primary-fixed dark:text-primary-fixed" style="font-size: 20px; line-height: 24px;">ShuttlePro</h1>
+<p class="font-label-sm text-label-sm text-secondary">Elite Club Manager</p>
+</div>
+</div>
+<button class="w-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md py-3 rounded hover:bg-primary-fixed-dim transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+                    New Session
+                </button>
+</div>
+<!-- Navigation Links -->
+<ul class="py-4">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 border-l-4 border-primary-fixed bg-surface-container-highest text-primary dark:text-primary font-bold hover:bg-surface-container-high hover:text-primary transition-colors duration-200 opacity-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_add_on">calendar_add_on</span>
+<span class="font-label-md text-label-md">Session Setup</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="sports_tennis">sports_tennis</span>
+<span class="font-label-md text-label-md">Active Session</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="summarize">summarize</span>
+<span class="font-label-md text-label-md">Session Summary</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label-md text-label-md">Player Analytics</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- Footer Links -->
+<ul class="py-4 border-t border-outline-variant dark:border-outline-variant">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-[280px] flex-1 flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface fixed top-0 right-0 w-[calc(100%-280px)] h-16 border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-margin-desktop w-full ml-[280px] z-40">
+<div class="flex items-center">
+<!-- Search could go here if needed per json, but 'search_bar': 'on_left' -->
+<div class="relative text-on-surface-variant focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">search</span>
+<input class="bg-surface-container-high border-none rounded-full py-1.5 pl-10 pr-4 text-sm font-body-md focus:ring-1 focus:ring-primary-fixed focus:outline-none w-64" placeholder="Search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-low transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-low transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</button>
+<button class="border border-primary-fixed text-primary-fixed hover:bg-primary-fixed hover:text-on-primary-fixed font-label-md text-label-md px-4 py-1.5 rounded transition-colors ml-2">
+                    Check In
+                </button>
+<div class="w-8 h-8 rounded-full ml-4 overflow-hidden border border-outline-variant">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPzNGrp6V3YyocIOcW5RLoPUP8wsPtZlD5QtRV-j51BkimeYj12K6nE2w5ZaPv1xVWJSEqOz9VFtm4yGDa_NDZk8ld787b5n99yXmruGNF2Os1JZmmCbDO9Rj8Ext6wklLzHIRJorVl62FuE7-3tDtxAQB9urdam28rW4TjxJqRbAw4U8KLr6g_1Y4xBCs9wEmmpsvcybHJjpLW7lwPbQd-UTNrhHKQ4VtnERqVmgxnMLz1LcmM0CObioEXzSWsFNh7oUyluFY6d-m"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="pt-24 px-margin-desktop pb-12 max-w-[1440px] mx-auto w-full">
+<!-- Header Section -->
+<div class="mb-8 flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Configure Session</h2>
+<p class="font-body-md text-body-md text-secondary">Select available players and set court parameters.</p>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block mb-1">Total Selected</span>
+<span class="font-display-md text-display-md text-primary-fixed leading-none" id="selected-count">12</span>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Player Selection Canvas (Spans 8 columns) -->
+<div class="col-span-12 xl:col-span-8 glass-panel rounded-lg p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-primary">Roster</h3>
+<div class="flex gap-2">
+<button class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors px-3 py-1 bg-surface-container rounded">Select All</button>
+<button class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors px-3 py-1 bg-surface-container rounded">Clear</button>
+</div>
+</div>
+<!-- Filter Tags -->
+<div class="flex gap-2 mb-6 overflow-x-auto pb-2">
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm cursor-pointer whitespace-nowrap">All Regulars</span>
+<span class="px-3 py-1 rounded-full bg-surface-container border border-outline-variant text-secondary hover:text-primary transition-colors font-label-sm text-label-sm cursor-pointer whitespace-nowrap">Advanced (A)</span>
+<span class="px-3 py-1 rounded-full bg-surface-container border border-outline-variant text-secondary hover:text-primary transition-colors font-label-sm text-label-sm cursor-pointer whitespace-nowrap">Intermediate (B)</span>
+<span class="px-3 py-1 rounded-full bg-surface-container border border-outline-variant text-secondary hover:text-primary transition-colors font-label-sm text-label-sm cursor-pointer whitespace-nowrap">Guests</span>
+</div>
+<!-- Player Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+<!-- Player Card 1 -->
+<div class="player-card selected bg-surface-container border border-outline-variant rounded p-4 cursor-pointer hover:border-primary-fixed transition-colors relative" onclick="this.classList.toggle('selected')">
+<div class="check-icon absolute top-2 right-2 text-primary-fixed">
+<span class="material-symbols-outlined" style="font-size: 18px; font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-high mx-auto mb-3 overflow-hidden">
+<img alt="Male player portrait" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsWvXWUDsCgeS_DqH-9Lwi-xprv9Tk67YgKK0Z9ZqkAnMA4ErYOFsSb7nDxsIsX10yY5bEkD5cZxKgjdkDn8dqMJg32ccsQyZ_7VXKrPsL3fct6GqIOUYeu_fD-NKc3pFWrdL7byyG1cXH_inpjkFmiV9mKGqMZey5vAJIRmplItnUzfsjiNoFkmUsfW-6kfpSgo9-8ZZbpFmlRepn86iJxdIYkJEuz4eej9fSXVupRw2fFZ5GAzn4n-gUZKISZZJvgy0wh3ez5rPg"/>
+</div>
+<div class="text-center">
+<h4 class="font-label-md text-label-md text-primary truncate">Marcus Chen</h4>
+<span class="font-label-sm text-label-sm text-secondary">Level A</span>
+</div>
+</div>
+<!-- Player Card 2 -->
+<div class="player-card selected bg-surface-container border border-outline-variant rounded p-4 cursor-pointer hover:border-primary-fixed transition-colors relative" onclick="this.classList.toggle('selected')">
+<div class="check-icon absolute top-2 right-2 text-primary-fixed">
+<span class="material-symbols-outlined" style="font-size: 18px; font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-high mx-auto mb-3 overflow-hidden">
+<img alt="Female player portrait" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0y2WeBwEkkRKi63S9NQLx4cGyTn326AO0_Alj0S4FeQ-Q6CEQuaQiRnJs4nJABSmjEzaRXg89inbz-7iWr6sBDv46_nF9kFCvX-DICEpdUNcVxLfnDEIVFT0x31alP8VI9MkICZWHSc-HSJzsa8xHTXFWUQ0nfGubG9h0TRLJvMSCs_SS8g0kDfouKzlGxIubz-w5FEyd_VFhq9gl9ofuEtVAgQkLTmJZUCfj5PFlzIbYHXi1dD11w3eY4arVmjbiCNy6VB7RCMPL"/>
+</div>
+<div class="text-center">
+<h4 class="font-label-md text-label-md text-primary truncate">Sarah Jenkins</h4>
+<span class="font-label-sm text-label-sm text-secondary">Level A</span>
+</div>
+</div>
+<!-- Player Card 3 -->
+<div class="player-card bg-surface-container border border-outline-variant rounded p-4 cursor-pointer hover:border-primary-fixed transition-colors relative" onclick="this.classList.toggle('selected')">
+<div class="check-icon absolute top-2 right-2 text-primary-fixed">
+<span class="material-symbols-outlined" style="font-size: 18px; font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-high mx-auto mb-3 flex items-center justify-center text-secondary font-headline-md">
+                                DT
+                            </div>
+<div class="text-center">
+<h4 class="font-label-md text-label-md text-primary truncate">David Tran</h4>
+<span class="font-label-sm text-label-sm text-secondary">Level B</span>
+</div>
+</div>
+<!-- Player Card 4 -->
+<div class="player-card selected bg-surface-container border border-outline-variant rounded p-4 cursor-pointer hover:border-primary-fixed transition-colors relative" onclick="this.classList.toggle('selected')">
+<div class="check-icon absolute top-2 right-2 text-primary-fixed">
+<span class="material-symbols-outlined" style="font-size: 18px; font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-high mx-auto mb-3 overflow-hidden">
+<img alt="Female player portrait" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt07LeKtBhGLz9ffonv0OWQz7nqIiGOBSMMdgeqDK30ocBH_iuUZwgm7FRssl92eAEIPDl76WHY3Y-jdFusN2XwB4acfK3kBEEf3_Zzr6ityKCSzZ31fotJ3DzFcCBLk_6MisqU_ZzBeQakYDuezXVU8E9cjh7gufrTM9wrvO7WfW-6B-M4gqITSi1nL7vFZ4NQfZ1a_vZuySt6ezsZ_MV2zXPDM1I85fz467Bl1HiJfBg0SqugEqydxaLLWQsRUWZuwgMqqZHxgfK"/>
+</div>
+<div class="text-center">
+<h4 class="font-label-md text-label-md text-primary truncate">Elena Rostova</h4>
+<span class="font-label-sm text-label-sm text-secondary">Level A</span>
+</div>
+</div>
+<!-- Additional placeholder cards for visual density -->
+<div class="player-card bg-surface-container border border-outline-variant rounded p-4 cursor-pointer hover:border-primary-fixed transition-colors relative" onclick="this.classList.toggle('selected')">
+<div class="check-icon absolute top-2 right-2 text-primary-fixed">
+<span class="material-symbols-outlined" style="font-size: 18px; font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-high mx-auto mb-3 flex items-center justify-center text-secondary font-headline-md">
+                                JL
+                            </div>
+<div class="text-center">
+<h4 class="font-label-md text-label-md text-primary truncate">James Lee</h4>
+<span class="font-label-sm text-label-sm text-secondary">Level C</span>
+</div>
+</div>
+<div class="player-card bg-surface-container border border-outline-variant rounded p-4 cursor-pointer hover:border-primary-fixed transition-colors relative" onclick="this.classList.toggle('selected')">
+<div class="check-icon absolute top-2 right-2 text-primary-fixed">
+<span class="material-symbols-outlined" style="font-size: 18px; font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-high mx-auto mb-3 flex items-center justify-center text-secondary font-headline-md">
+                                MK
+                            </div>
+<div class="text-center">
+<h4 class="font-label-md text-label-md text-primary truncate">Mia Kim</h4>
+<span class="font-label-sm text-label-sm text-secondary">Level B</span>
+</div>
+</div>
+</div>
+<!-- Add Guest Action -->
+<button class="mt-6 w-full border border-dashed border-outline-variant text-secondary hover:text-primary hover:border-outline p-4 rounded flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined">person_add</span>
+<span class="font-label-md text-label-md">Add Guest Player</span>
+</button>
+</div>
+<!-- Parameters & Actions (Spans 4 columns) -->
+<div class="col-span-12 xl:col-span-4 flex flex-col gap-6">
+<!-- Court Configuration -->
+<div class="glass-panel rounded-lg p-6">
+<h3 class="font-headline-md text-headline-md text-primary mb-6">Court Config</h3>
+<div class="mb-6">
+<label class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block mb-3">Number of Courts</label>
+<div class="flex items-center justify-between bg-surface-container border border-outline-variant rounded p-2">
+<button class="w-10 h-10 rounded bg-surface hover:bg-surface-container-high text-primary flex items-center justify-center transition-colors" onclick="document.getElementById('court-count').innerText = Math.max(1, parseInt(document.getElementById('court-count').innerText) - 1)">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="font-headline-lg text-headline-lg text-primary" id="court-count">3</span>
+<button class="w-10 h-10 rounded bg-surface hover:bg-surface-container-high text-primary flex items-center justify-center transition-colors" onclick="document.getElementById('court-count').innerText = parseInt(document.getElementById('court-count').innerText) + 1">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block mb-3">Match Type</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="bg-primary-fixed text-on-primary-fixed font-label-md text-label-md py-2 rounded">Doubles</button>
+<button class="bg-surface-container border border-outline-variant text-secondary hover:text-primary font-label-md text-label-md py-2 rounded transition-colors">Singles</button>
+</div>
+</div>
+</div>
+<!-- Match Generation Logic -->
+<div class="glass-panel rounded-lg p-6 flex-1 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Algorithm Settings</h3>
+<div class="space-y-4 mb-8 flex-1">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-radio text-primary-fixed bg-surface-container border-outline-variant focus:ring-primary-fixed focus:ring-offset-surface" name="algo" type="radio"/>
+<span class="font-body-md text-body-md text-secondary group-hover:text-primary transition-colors">Level-Based (Competitive)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="form-radio text-primary-fixed bg-surface-container border-outline-variant focus:ring-primary-fixed focus:ring-offset-surface" name="algo" type="radio"/>
+<span class="font-body-md text-body-md text-primary">Balanced (Social Mix)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox rounded text-primary-fixed bg-surface-container border-outline-variant focus:ring-primary-fixed focus:ring-offset-surface" type="checkbox"/>
+<span class="font-label-md text-label-md text-secondary group-hover:text-primary transition-colors">Prioritize waiting players</span>
+</label>
+</div>
+<!-- Primary CTA -->
+<button class="w-full bg-primary-fixed text-on-primary-fixed font-headline-md text-headline-md py-4 rounded-lg hover:shadow-[0_0_15px_rgba(210,240,0,0.3)] transition-all transform hover:-translate-y-0.5 mt-auto flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                            Generate Fair Matchups
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

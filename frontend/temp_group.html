@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShuttlePro - Friday Smashers Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#363a3c",
+                      "inverse-surface": "#e0e3e6",
+                      "error-container": "#93000a",
+                      "secondary-fixed-dim": "#c6c6c9",
+                      "surface-tint": "#b8d300",
+                      "outline": "#909378",
+                      "on-primary": "#2c3400",
+                      "on-surface": "#e0e3e6",
+                      "surface-container-highest": "#323538",
+                      "surface-container": "#1c2023",
+                      "on-tertiary-fixed": "#181c20",
+                      "on-background": "#e0e3e6",
+                      "on-primary-fixed": "#191e00",
+                      "on-error-container": "#ffdad6",
+                      "error": "#ffb4ab",
+                      "on-tertiary": "#2d3135",
+                      "surface-container-high": "#272a2d",
+                      "on-secondary": "#2f3133",
+                      "on-tertiary-fixed-variant": "#43474b",
+                      "outline-variant": "#454932",
+                      "primary": "#ffffff",
+                      "background": "#101416",
+                      "inverse-on-surface": "#2d3133",
+                      "surface": "#101416",
+                      "secondary-container": "#454749",
+                      "primary-fixed": "#d2f000",
+                      "on-secondary-fixed": "#1a1c1e",
+                      "tertiary-fixed": "#e0e3e8",
+                      "on-primary-fixed-variant": "#414c00",
+                      "on-secondary-container": "#b4b5b7",
+                      "on-primary-container": "#5d6b00",
+                      "on-error": "#690005",
+                      "primary-fixed-dim": "#b8d300",
+                      "inverse-primary": "#576500",
+                      "on-tertiary-container": "#616569",
+                      "tertiary-fixed-dim": "#c3c7cc",
+                      "surface-variant": "#323538",
+                      "on-surface-variant": "#c6c9ab",
+                      "tertiary-container": "#e0e3e8",
+                      "on-secondary-fixed-variant": "#454749",
+                      "primary-container": "#d2f000",
+                      "surface-container-lowest": "#0b0f11",
+                      "surface-container-low": "#181c1e",
+                      "surface-dim": "#101416",
+                      "tertiary": "#ffffff",
+                      "secondary": "#c6c6c9",
+                      "secondary-fixed": "#e2e2e5"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max-width": "1440px",
+                      "grid-columns": "12",
+                      "gutter": "24px",
+                      "base": "8px",
+                      "margin-desktop": "40px",
+                      "sidebar-width": "280px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Sora"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Sora"
+                      ],
+                      "headline-lg": [
+                              "Sora"
+                      ],
+                      "display-md": [
+                              "Sora"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "72px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-md": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0F1112; /* Fallback for background */
+            color: #e0e3e6; /* Fallback for on-background */
+        }
+        
+        /* Custom scrollbar for data tables */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #101416;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #323538;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #454749;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 right-0 w-[calc(100%-280px)] h-16 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-margin-desktop z-40 ml-[280px]">
+<div class="flex items-center gap-4">
+<!-- Search left empty as per spec 'on_left', placeholder for search functionality -->
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-label-md">search</span>
+<input class="bg-surface-container-high border-outline-variant focus:border-primary-fixed text-on-surface rounded-full py-2 pl-10 pr-4 text-label-md w-64 transition-colors outline-none placeholder:text-on-surface-variant" placeholder="Search players, sessions..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</button>
+</div>
+<button class="bg-primary-fixed text-on-primary-fixed hover:bg-primary-fixed-dim transition-colors px-6 py-2 rounded-full font-label-md text-label-md font-semibold">
+                Check In
+            </button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden cursor-pointer hover:border-primary-fixed transition-colors">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A close-up portrait of a professional sports organizer, wearing modern dark athletic wear, set against a subtle, dark tech-focused background. The lighting is focused and cinematic, highlighting their confident expression, aligning with a premium, high-contrast dark theme aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVf7ARs6QFo_DpnSYktym1iGIZhrZzk9sqxHfsWIq4jeidTwnW13gKEqnBbAvfplEck69XsbWmS4scQRlMJ15okjfX4t0C07t7ORzSipPSN4D7cKZYrCZPv2WG3pravle3mpFJy00Mp1AbKXVtYJ5xeWylLlmAfIvsfs9OKgT8P9sjCVwrMoLa7X4uBULhd5yLmy9uHxEpAA6OIS4F1-X6_UWaleWGOdo8L9fLa1HzGIZ0DwGhOhiKvgwFW7j2bMNeO_dBKr0V1wTC"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container dark:bg-surface-container border-r border-outline-variant dark:border-outline-variant flex flex-col z-50">
+<!-- Header / Brand -->
+<div class="p-6 border-b border-outline-variant flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-headline-lg font-bold" data-icon="sports_tennis">sports_tennis</span>
+</div>
+<div>
+<h1 class="font-display-md text-headline-md font-bold text-primary-fixed dark:text-primary-fixed tracking-tight">ShuttlePro</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Elite Club Manager</p>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<div class="flex-1 overflow-y-auto py-6">
+<nav class="flex flex-col gap-2">
+<!-- Dashboard (Active) -->
+<a class="flex items-center gap-3 px-4 py-3 border-l-4 border-primary-fixed bg-surface-container-highest text-primary dark:text-primary font-bold transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" data-weight="fill" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_add_on">calendar_add_on</span>
+<span class="font-label-md text-label-md">Session Setup</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="sports_tennis">sports_tennis</span>
+<span class="font-label-md text-label-md">Active Session</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="summarize">summarize</span>
+<span class="font-label-md text-label-md">Session Summary</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label-md text-label-md">Player Analytics</span>
+</a>
+</nav>
+</div>
+<!-- CTA -->
+<div class="p-6">
+<button class="w-full bg-primary-fixed text-on-primary-fixed hover:bg-primary-fixed-dim transition-colors py-3 rounded-lg font-label-md text-label-md font-bold flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(210,240,0,0.15)]">
+<span class="material-symbols-outlined">add</span>
+                New Session
+            </button>
+</div>
+<!-- Footer Tabs -->
+<div class="mt-auto border-t border-outline-variant p-4 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-2 text-secondary dark:text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200 rounded-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-secondary dark:text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200 rounded-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[280px] mt-16 p-margin-desktop min-h-screen">
+<div class="max-w-container-max-width mx-auto">
+<!-- Group Header -->
+<header class="mb-10 flex justify-between items-end">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="px-3 py-1 bg-surface-container-high rounded-full border border-outline-variant font-label-sm text-label-sm text-primary-fixed tracking-wider uppercase">Pro Tier</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">location_on</span> Community Rec Center</span>
+</div>
+<h2 class="font-display-md text-display-md font-bold text-primary">Friday Smashers</h2>
+</div>
+<button class="bg-primary-fixed text-on-primary-fixed hover:bg-primary-fixed-dim transition-colors px-8 py-3 rounded-lg font-label-md text-label-md font-bold flex items-center gap-2 shadow-[0_0_20px_rgba(210,240,0,0.2)]">
+<span class="material-symbols-outlined" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                    Start New Session
+                </button>
+</header>
+<!-- KPI Bento Grid -->
+<div class="grid grid-cols-12 gap-gutter mb-10">
+<!-- Next Session Card (Spans 5) -->
+<div class="col-span-12 lg:col-span-5 bg-[#1E2022] border border-[#2D3135] rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-primary-fixed opacity-5 blur-[80px] rounded-full group-hover:opacity-10 transition-opacity"></div>
+<div class="flex justify-between items-start mb-6 relative z-10">
+<h3 class="font-headline-sm text-headline-sm font-semibold text-primary">Next Session</h3>
+<span class="material-symbols-outlined text-primary-fixed">event</span>
+</div>
+<div class="relative z-10">
+<div class="text-display-md font-display-md font-bold text-primary-fixed mb-1">Tomorrow</div>
+<div class="text-body-lg font-body-lg text-on-surface-variant mb-6">19:00 - 22:00 • Courts 1, 2, 3</div>
+<div class="flex items-center justify-between border-t border-[#2D3135] pt-4">
+<div class="flex -space-x-3">
+<img alt="RSVP Player" class="w-10 h-10 rounded-full border-2 border-[#1E2022] object-cover" data-alt="A focused portrait of a diverse male athlete in a dark studio setting. He wears a high-performance black athletic top. The lighting is cinematic with sharp highlights, perfect for a modern dark-themed sports application profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7ovdaMGZUHJLmadcxd2XLwDcq2lJjcZPnFCTU3aNCHAFCNDMPOGzVHMhLkX_QrgcvygjFbp9tUptetodd-CCiDg7NuMjJxJ1fUngZ2bJ1iatyt3N_iVaSRW1o7necnEVj7LrO1tUI0vTv2Auao_9b8hLu0NNtm0l9RxUlW9prKuZzTgmiMgg1fsIid_sb_Wmh3yDj40cn9hP2wrg4QppcnSmbIVqxXjDEFa4SCw-kqN8HaPywCzQVqfUmfWXyh9zly3S9ZQ2WjWsb"/>
+<img alt="RSVP Player" class="w-10 h-10 rounded-full border-2 border-[#1E2022] object-cover" data-alt="A focused portrait of a diverse female athlete in a dark studio setting. She wears a high-performance grey athletic top. The lighting is cinematic with sharp highlights, perfectly suited for a premium dark-themed sports dashboard profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcCYcbTueCJYj1w-tYfp_CBNu-xCRbK09CTQKvRfLkQ85tmJC9uIUMxKqYQS4174CyFrHccfiQA-t1Ep4_7-NAXH1bjyVVjohbJcHdaQe3suu2BBunUfPeKpLYmdtlgVBI8fTCUnfPad6UBdz6KY5-M4sEyoyJlkxbSG2DghVmXVYaUObpaQhBy1-gKEIX-JEbMKxoIVKDCVQVS6XaNnAhYrahGb5st376w_TiBk-AUqrzlm8LpRzmUiqNZGTo0m9g-U3ZFXm_PStg"/>
+<img alt="RSVP Player" class="w-10 h-10 rounded-full border-2 border-[#1E2022] object-cover" data-alt="A portrait of an intense male athlete looking directly at the camera, lit by dramatic studio lighting against a dark charcoal background. He conveys readiness and focus, fitting a high-contrast dark mode sports UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiIPGsV_RaiZzRo8vaGWQehodeUt2Mk2lyEKhCiyX7hk08nCyhZaIwLnPg8vCo2tvYdUmnKgoMPV7YoibTOpgrrv1hw3DuI8_JxRNZCwYH9pievRqg3d_qKEX8z3NIYiycLMgiAyjUnlF42etdAkW_9LE8Z5oeNqJIU4OdE-Kh7WEDTuHwW2TwWTrvKDE3Vn4kLutx6MydD3tj_p2ga6mtW4fu1oBmA4cGS5QVrCgR4ciGbBGFTdMRNuKtrT3d1s50mCzqtVBNrjmc"/>
+<div class="w-10 h-10 rounded-full border-2 border-[#1E2022] bg-surface-container-high flex items-center justify-center text-label-sm font-label-sm text-primary-fixed z-10">
+                                    +12
+                                </div>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">15/20 RSVP</span>
+</div>
+</div>
+</div>
+<!-- Active Players (Spans 4) -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 bg-[#1E2022] border border-[#2D3135] rounded-xl p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-sm text-headline-sm font-semibold text-primary">Active Players</h3>
+<span class="material-symbols-outlined text-on-surface-variant">groups</span>
+</div>
+<div>
+<div class="flex items-baseline gap-3">
+<span class="text-display-md font-display-md font-bold text-primary">28</span>
+<span class="text-label-md font-label-md text-primary-fixed flex items-center"><span class="material-symbols-outlined text-[16px]">trending_up</span> +3 this month</span>
+</div>
+<div class="w-full bg-[#101416] h-2 rounded-full mt-4 overflow-hidden">
+<div class="bg-primary-fixed h-full rounded-full w-[85%]"></div>
+</div>
+<div class="flex justify-between mt-2">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Current</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Cap: 32</span>
+</div>
+</div>
+</div>
+<!-- Group Funds (Spans 3) -->
+<div class="col-span-12 md:col-span-6 lg:col-span-3 bg-[#1E2022] border border-[#2D3135] rounded-xl p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-sm text-headline-sm font-semibold text-primary">Group Funds</h3>
+<span class="material-symbols-outlined text-on-surface-variant">account_balance_wallet</span>
+</div>
+<div>
+<div class="text-display-md font-display-md font-bold text-primary tracking-tight">$420<span class="text-headline-md font-headline-md text-on-surface-variant">.50</span></div>
+<div class="mt-4 flex flex-col gap-2">
+<div class="flex justify-between items-center bg-[#101416] p-2 rounded border border-[#2D3135]">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Pending Dues</span>
+<span class="text-label-sm font-label-sm text-error font-bold">$45.00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Team Roster Section -->
+<section class="bg-[#1E2022] border border-[#2D3135] rounded-xl overflow-hidden">
+<div class="p-6 border-b border-[#2D3135] flex justify-between items-center bg-[#1E2022] sticky top-0 z-20">
+<div>
+<h3 class="font-headline-md text-headline-md font-bold text-primary">Team Roster</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-1">Manage players, track performance, and handle attendance.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-transparent border border-primary-fixed text-primary-fixed hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors px-4 py-2 rounded font-label-sm text-label-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">filter_list</span> Filter
+                        </button>
+<button class="bg-transparent text-[#94979A] hover:text-primary transition-colors px-4 py-2 rounded font-label-sm text-label-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span> Add Player
+                        </button>
+</div>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="bg-[#1A1C1E] border-b border-[#2D3135]">
+<th class="py-4 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Player</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Level</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Win Rate</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Games Played</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Last Active</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#2D3135] text-body-md font-body-md text-primary">
+<!-- Row 1 -->
+<tr class="hover:bg-[#2D3135] transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<img alt="Alex Chen" class="w-10 h-10 rounded-full object-cover" data-alt="A headshot of a confident young male athlete against a dark studio background. He is wearing a dark, sleek athletic shirt. The lighting is strong, highlighting his features, perfectly matching a professional dark mode application design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwDCu4ANIGvnWO_mjQg7sR-Pz92Xxpyao7tXR5nUHfpqRR3gw2FPJB4uHvgSvDGLOiwNm0tQZb9_n6roG4KZrs-s-0NowgpEldtwNEMy-Sidn45dIZrhVm-_FocYZ-f0klhw97xXBy69AVJYf877axUqrD5pVmdq4e7f8oIXRel-QF5VOQMqWct9gK-RHnLGPMkUnGXaw5UmG3jlXVH5uAsbx_Gm9Bcd95La68CDC1iarUOpp9wEVavq4B6dhS7CB04NcpDx4muu4q"/>
+<div>
+<div class="font-semibold">Alex Chen</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">alex.c@example.com</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="px-2 py-1 bg-surface-container-highest rounded border border-outline-variant text-label-sm font-label-sm text-primary-fixed">Advanced</span>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary">68%</span>
+<div class="w-16 h-1.5 bg-[#101416] rounded-full overflow-hidden">
+<div class="bg-primary-fixed h-full w-[68%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-on-surface-variant">142</td>
+<td class="py-4 px-6 text-on-surface-variant">2 days ago</td>
+<td class="py-4 px-6 text-right">
+<button class="text-on-surface-variant hover:text-primary-fixed transition-colors p-1 opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-[#2D3135] transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<img alt="Sarah Jenkins" class="w-10 h-10 rounded-full object-cover" data-alt="A headshot of a female athlete looking determined, set against a dark charcoal background. She wears high-performance gear. Cinematic, high-contrast lighting creates a professional, moody aesthetic suitable for a premium dark UI roster." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAbaVzQvBzYk6zJ-MAsfkuHXuQKxzdKEtdSxrGrDWcvZOBhutEYx7upHJIfdZze4diC60Fyp5KTD1MlfCrrKPFW2NQB4FPcvsaXlr9Y8TBRv8mSEj-WJcZe5__uLa3e1USuEoFy-dtb1qs5kDapwhaQb0QZbCtGwFZxaQ5X9XrxWRPuBWgwuD8GxNKZJfEocYHxwdRzkTEqGrrRU3Ek_mDPiLGYcIflPD_K_ygejgBZTLgTSO1ArTHAIB75fHukJxG5KFclG_zl7nw"/>
+<div>
+<div class="font-semibold">Sarah Jenkins</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">s.jenkins@example.com</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="px-2 py-1 bg-surface-container-highest rounded border border-outline-variant text-label-sm font-label-sm text-primary-fixed">Intermediate</span>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary">52%</span>
+<div class="w-16 h-1.5 bg-[#101416] rounded-full overflow-hidden">
+<div class="bg-primary-fixed h-full w-[52%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-on-surface-variant">86</td>
+<td class="py-4 px-6 text-on-surface-variant">1 week ago</td>
+<td class="py-4 px-6 text-right">
+<button class="text-on-surface-variant hover:text-primary-fixed transition-colors p-1 opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-[#2D3135] transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-[#2D3135] flex items-center justify-center font-bold text-primary-fixed">
+                                            MK
+                                        </div>
+<div>
+<div class="font-semibold">Marcus King</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">marcus.k@example.com</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="px-2 py-1 bg-surface-container-highest rounded border border-outline-variant text-label-sm font-label-sm text-primary-fixed">Beginner</span>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary">31%</span>
+<div class="w-16 h-1.5 bg-[#101416] rounded-full overflow-hidden">
+<div class="bg-primary-fixed h-full w-[31%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-on-surface-variant">24</td>
+<td class="py-4 px-6 text-on-surface-variant">Yesterday</td>
+<td class="py-4 px-6 text-right">
+<button class="text-on-surface-variant hover:text-primary-fixed transition-colors p-1 opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+</body></html>

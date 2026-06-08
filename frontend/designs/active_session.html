@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Active Session - ShuttlePro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#363a3c",
+                        "inverse-surface": "#e0e3e6",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#c6c6c9",
+                        "surface-tint": "#b8d300",
+                        "outline": "#909378",
+                        "on-primary": "#2c3400",
+                        "on-surface": "#e0e3e6",
+                        "surface-container-highest": "#323538",
+                        "surface-container": "#1c2023",
+                        "on-tertiary-fixed": "#181c20",
+                        "on-background": "#e0e3e6",
+                        "on-primary-fixed": "#191e00",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#2d3135",
+                        "surface-container-high": "#272a2d",
+                        "on-secondary": "#2f3133",
+                        "on-tertiary-fixed-variant": "#43474b",
+                        "outline-variant": "#454932",
+                        "primary": "#ffffff",
+                        "background": "#101416",
+                        "inverse-on-surface": "#2d3133",
+                        "surface": "#101416",
+                        "secondary-container": "#454749",
+                        "primary-fixed": "#d2f000",
+                        "on-secondary-fixed": "#1a1c1e",
+                        "tertiary-fixed": "#e0e3e8",
+                        "on-primary-fixed-variant": "#414c00",
+                        "on-secondary-container": "#b4b5b7",
+                        "on-primary-container": "#5d6b00",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#b8d300",
+                        "inverse-primary": "#576500",
+                        "on-tertiary-container": "#616569",
+                        "tertiary-fixed-dim": "#c3c7cc",
+                        "surface-variant": "#323538",
+                        "on-surface-variant": "#c6c9ab",
+                        "tertiary-container": "#e0e3e8",
+                        "on-secondary-fixed-variant": "#454749",
+                        "primary-container": "#d2f000",
+                        "surface-container-lowest": "#0b0f11",
+                        "surface-container-low": "#181c1e",
+                        "surface-dim": "#101416",
+                        "tertiary": "#ffffff",
+                        "secondary": "#c6c6c9",
+                        "secondary-fixed": "#e2e2e5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max-width": "1440px",
+                        "grid-columns": "12",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin-desktop": "40px",
+                        "sidebar-width": "280px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Sora"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Sora"],
+                        "headline-lg": ["Sora"],
+                        "display-md": ["Sora"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-md": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #101416; color: #e0e3e6; }
+        .glass-panel { background: rgba(30, 32, 34, 0.6); backdrop-filter: blur(12px); border: 1px solid #2d3135; }
+        .pulse-glow { animation: pulseGlow 2s infinite; }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(210, 240, 0, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(210, 240, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(210, 240, 0, 0); }
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md bg-background overflow-x-hidden">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 bottom-0 w-[280px] z-50 flex flex-col bg-surface-container border-r border-outline-variant">
+<div class="p-6 border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'FILL' 1;">sports_tennis</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary-fixed">ShuttlePro</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Elite Club Manager</p>
+</div>
+</div>
+<button class="w-full mt-6 py-3 px-4 rounded-lg bg-primary-fixed text-on-primary-fixed font-label-md text-label-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                New Session
+            </button>
+</div>
+<nav class="flex-1 py-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">calendar_add_on</span>
+<span class="font-label-md text-label-md">Session Setup</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 border-l-4 border-primary-fixed bg-surface-container-highest text-primary font-bold opacity-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">sports_tennis</span>
+<span class="font-label-md text-label-md">Active Session</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">summarize</span>
+<span class="font-label-md text-label-md">Session Summary</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label-md text-label-md">Player Analytics</span>
+</a>
+</nav>
+<div class="p-4 border-t border-outline-variant">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-[calc(100%-280px)] h-16 flex justify-between items-center px-margin-desktop bg-surface border-b border-outline-variant z-40">
+<div class="flex items-center text-on-surface-variant">
+<!-- Search placeholder on left as per JSON -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-highest border border-outline-variant rounded-full py-2 pl-10 pr-4 font-label-md text-label-md focus:border-primary-fixed focus:outline-none focus:ring-1 focus:ring-primary-fixed w-64 text-on-surface placeholder-on-surface-variant transition-colors" placeholder="Search players..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full">
+<span class="material-symbols-outlined">history</span>
+</button>
+<button class="px-4 py-2 bg-transparent border border-primary-fixed text-primary-fixed font-label-md text-label-md rounded-lg hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors">
+                Check In
+            </button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A close-up portrait of a young professional in a dark, moody studio setting. The lighting is cinematic, casting subtle shadows while highlighting their focused expression. The color palette leans heavily into deep charcoal tones with a faint, technical yellow accent light catching the edge of their face. High contrast, highly detailed, photorealistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdk2EMF_QQYE8ihtD9pZ3vjciiAkvL_8hF9Twv-zRv-Ly-qiJcx3RK_bPpV7CPf2HDIbJAkLYGbGHyfVLtGvr6iVheKLxctN85hZAboKOZmjsPWbl9M2A_GSfXYXGzwVDPyd8eOGAFUajSCv6ZZJYLJG4QDdFqYeZzASqPJi0TvSxmXc7vStk_l68jA1AUgWRo5ialulYWX9pX1yV6ToK4fZgLXQ5qyK5vi4es3E4PluXfHGWS0RVN6svfqnxeSFcwezeBkZaBbEIz"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[280px] pt-16 min-h-screen p-8 max-w-[1440px] mx-auto">
+<!-- Live Timer Header -->
+<div class="flex justify-between items-end mb-8 border-b border-outline-variant pb-6">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="w-3 h-3 rounded-full bg-primary-fixed pulse-glow"></span>
+<span class="font-label-md text-label-md text-primary-fixed tracking-wider uppercase">Live Session</span>
+</div>
+<h2 class="font-display-md text-display-md text-on-surface mb-1">Men's Doubles League</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Round Robin • Week 4</p>
+</div>
+<div class="text-right">
+<div class="font-display-lg text-display-lg text-primary-fixed tabular-nums" id="live-timer">
+                    42:15
+                </div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mt-2">Elapsed Time</p>
+</div>
+</div>
+<!-- Global Actions Toolbar -->
+<div class="flex justify-between items-center mb-8 glass-panel p-4 rounded-xl">
+<div class="flex gap-4">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-lg text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors border border-outline-variant">
+<span class="material-symbols-outlined text-[20px]">shuffle</span>
+                    Shuffle Teams
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-lg text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors border border-outline-variant">
+<span class="material-symbols-outlined text-[20px]">pause</span>
+                    Pause Session
+                </button>
+</div>
+<button class="flex items-center gap-2 px-6 py-2 bg-error-container text-on-error-container font-label-md text-label-md rounded-lg hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">stop_circle</span>
+                End Session
+            </button>
+</div>
+<!-- Courts Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<!-- Court 1 -->
+<div class="bg-surface-container rounded-xl border border-outline-variant overflow-hidden flex flex-col">
+<div class="p-4 bg-surface-container-highest border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Court 1</h3>
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant font-label-sm text-label-sm rounded uppercase tracking-wider">In Progress</span>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-center gap-8">
+<!-- Team Alpha -->
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-surface-container bg-surface-variant overflow-hidden"><img alt="Player" class="w-full h-full object-cover" data-alt="Close up portrait of a male badminton player in a high contrast dark gym setting. Technical sportswear. Professional lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDclTm1MBuakXErvB7rC9dusG3UpFguXcmtztwlSY3y2wxuRbvU8TzwKNyaH7dSfCg-sOu-ohOF9Xmz7ubks9HDh2oHMaU01TYYK2144MHBpqKLOKJ4SX3UG8WOUHW5L0qPwKKW_evHlznmpmEHOyrd4dV-CVZph7KCct2_iUc-aC03tJs_QMdJRLP-whbbf9vTGM-kBNxncWEyVYAUmDJNvMIMy5t8I3XWaQV34-IJy1MOTVeAmC1sw2wGypLaxW0BWPq9hjlRymOZ"/></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container bg-surface-variant overflow-hidden"><img alt="Player" class="w-full h-full object-cover" data-alt="Close up portrait of a female badminton player in a high contrast dark gym setting. Technical sportswear. Professional lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtsrJJt99i5L7b4JpGk6DKylgf0WZtDxq-bUxkGSAWYNLt_ROsVIhp5FtW52Ie6GLlXEMudfygs9YOGpQKANFDcqIn5iz_IK1Xzeyb44Q_oThbINft-RqfwrmG8Szle1MroO4mQQbg--2qFya78WkaLl_4WV8cObelVU6-bt-tZyoZeg5x-GwPH0xuI75TBqZhbPIOK8SNPOpteV0-f456igFmQl7D0r1QCbt7ctSiHXkja7TdddbCSwdIQh90jAa2f4hwl7rVUej_"/></div>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface">J. Smith / A. Chen</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Team Alpha</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface hover:border-primary-fixed hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="font-headline-lg text-headline-lg text-primary-fixed tabular-nums w-12 text-center">21</span>
+<button class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="h-px w-full bg-outline-variant relative">
+<span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-surface-container px-2 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">VS</span>
+</div>
+<!-- Team Bravo -->
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-surface-container bg-surface-variant overflow-hidden"><img alt="Player" class="w-full h-full object-cover" data-alt="Close up portrait of a male badminton player focused on the game. Dark high-tech athletic environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9oGajQm_a_o1SGZtPwvkuSdZ7Z3farrtnN9ikbaf6ssUy5_L8t8hg4Pg6-XkfkfbRhTq_02ZZtL2G7IyZy2v9woqlAmDlazZhqQBUKj3VJ2JzHH9uKDIk6bQTGqHOpeVyRSJvQNhghPPEsxq7bV3lh_JnQrIqYDlsVJvspE5T1SizWWm8NpI3hKUFBy50r8vq7V8zAqUTCB97YuIIqZdGgs7MbYb6OskgX0nRS_d7UARLqKWL41wbvbunsBsTtxpgyot_SSbCgzS9"/></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container bg-surface-variant overflow-hidden"><img alt="Player" class="w-full h-full object-cover" data-alt="Close up portrait of a female badminton player ready to serve. Moody cinematic sports lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr5BTGM8slxTfjT8iUZazLaTAbe3W4Pjmx_gE6zQ_hXvU78Jb3GbCQuacWFYOGGAopFlozniiK8q7-qigO6tzNVKjkG9NRyicv2AfdjNMFcNJhB4dAeBPfVLSsb7713mA3Ycp9zTCAKvS3TOJCyybd98jhBLS7kb-UK6aRtP0ErS0G6mlPsekAIUbvTsS0Kk6_dD5yDH07jFMWm48H4tsQOE9nh8qW0NaxWas74fzvy57Kbte6XfidbSXvTb_f1SQHH5_ivYwQYxYf"/></div>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface">M. Davis / K. Lee</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Team Bravo</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface hover:border-primary-fixed hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="font-headline-lg text-headline-lg text-on-surface tabular-nums w-12 text-center">18</span>
+<button class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Court 2 -->
+<div class="bg-surface-container rounded-xl border border-outline-variant overflow-hidden flex flex-col opacity-75 grayscale-[20%] transition-all hover:opacity-100 hover:grayscale-0">
+<div class="p-4 bg-surface-container-highest border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Court 2</h3>
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant font-label-sm text-label-sm rounded uppercase tracking-wider">Warmup</span>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-center gap-8">
+<!-- Content structured similarly to Court 1 for layout consistency, but scores at 0 -->
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-surface-container bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-sm">person</span></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-sm">person</span></div>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface">Team Charlie</div>
+</div>
+</div>
+<div class="font-headline-lg text-headline-lg text-on-surface-variant tabular-nums w-12 text-center">0</div>
+</div>
+<div class="h-px w-full bg-outline-variant relative">
+<span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-surface-container px-2 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">VS</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-surface-container bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-sm">person</span></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-sm">person</span></div>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface">Team Delta</div>
+</div>
+</div>
+<div class="font-headline-lg text-headline-lg text-on-surface-variant tabular-nums w-12 text-center">0</div>
+</div>
+</div>
+</div>
+<!-- Court 3 -->
+<div class="bg-surface-container rounded-xl border border-outline-variant border-dashed overflow-hidden flex flex-col items-center justify-center p-8 text-center hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[48px] text-on-surface-variant mb-4">add_box</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Assign Court</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Select players from the waiting list to begin a new match.</p>
+</div>
+</div>
+</main>
+<script>
+        // Simple JS for timer pulsing effect
+        setInterval(() => {
+            const timer = document.getElementById('live-timer');
+            // Mock timer update logic could go here
+        }, 1000);
+    </script>
+</body></html>
