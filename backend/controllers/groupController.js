@@ -80,7 +80,7 @@ exports.addMemberManually = asyncWrapper(async (req, res, next) => {
     name,
     username,
     password: password || 'defaultPass123',
-    email: `${username}@temp.com`,
+    email: `${username.replace(/\s+/g, '').toLowerCase()}@temp.com`,
     groupId: req.params.id,
     role: 'member',
     isActive: true,
