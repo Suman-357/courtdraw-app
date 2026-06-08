@@ -70,14 +70,7 @@ export default function Login() {
         </form>
       </div>
       
-      <div className="mt-8 text-center text-label-sm text-on-surface-variant space-y-2 border border-outline-variant p-4 rounded-xl">
-        <p className="font-bold text-primary mb-2">Test Credentials</p>
-        <div className="grid grid-cols-1 gap-1 text-left">
-          <p><span className="text-primary-fixed w-24 inline-block">SuperAdmin:</span> <span className="font-mono text-primary">superadmin@example.com</span> / <span className="font-mono text-primary">password</span></p>
-          <p><span className="text-primary-fixed w-24 inline-block">Group Admin:</span> <span className="font-mono text-primary">admin</span> / <span className="font-mono text-primary">password</span></p>
-          <p><span className="text-primary-fixed w-24 inline-block">Member:</span> <span className="font-mono text-primary">alice</span> / <span className="font-mono text-primary">password</span></p>
-        </div>
-      </div>
+
     </div>
   );
 }
